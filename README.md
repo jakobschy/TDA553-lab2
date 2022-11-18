@@ -1,5 +1,5 @@
 # TDA553-lab1
 
 Isak Söderlind
-Jakob Schyldt
+Jakob Schüldt
 Houmam Kadamani
