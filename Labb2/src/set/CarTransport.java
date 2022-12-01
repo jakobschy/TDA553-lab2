@@ -1,13 +1,14 @@
 package src.set;
 import java.awt.*;
 import java.util.List;
-import java.lang.Math.*;
 import java.util.ArrayList;
 
-public class CarTransport extends Truck{
+public class CarTransport extends Truck implements LoaderInter, Moveable{
     private boolean rampDown = false;
-    private List<PassengerCar> loadedCars = new ArrayList<>();
+    private List<Vehicle> loadedCars = new ArrayList<>();
     private int loadCapacity = 5;
+    private CarLoader loader = new CarLoader();
+    
 
     public CarTransport(){
         super(2, 125, 0, Color.red, "CarTransport", 0.05);
@@ -38,18 +39,18 @@ public class CarTransport extends Truck{
         return !rampDown;
 
     }
-
-    public void loadCar(PassengerCar car){
-        if(Math.sqrt(Math.pow(this.getX()-car.getX(), 2) + Math.pow(this.getY()-car.getY(), 2)) <= 10){
-            if(loadedCars.size() < 5){
-                loadedCars.add(car);
-            } else {
-                System.out.println("Max loaded cars reached");
-            }
-        }
+    public List<Vehicle> getLoadedCars(){
+        return loadedCars;
     }
-
-    public void unloadCar(PassengerCar car){
-        loadedCars.remove(car);
+    public int getLoadCapacity(){
+        return loadCapacity;
     }
+    public void loadCar(Vehicle car){
+        if(!car.getClass().equals(CarTransport.class))
+        loader.loadCar(car, this);
+    }
+    public void unloadCar(Vehicle car){
+        loader.unloadCar(car, this);
+    }
+    
 }

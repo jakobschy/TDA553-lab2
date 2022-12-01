@@ -1,13 +1,18 @@
 package src.set;
 import java.awt.*;
 
-public class Saab95 extends Turbo{
+public class Saab95 extends PassengerCar{
 
-    public boolean turboOn;
-    
-    public Saab95(){
-        super(2, 125, 0, Color.red, "Saab95", 0.07, 1.3);
-	    turboOn = false;
+    private Engine engine;
+    private double turboFactor = 1.25;
+       
+    public Saab95(double enginePower){
+        super(2, enginePower, 0, Color.red, "Saab95", 0.07);
+	    engine = new Engine(enginePower);
+    }
+
+    public double speedFactor(){
+        return engine.turboSpeedFactor(turboFactor);
     }
 
 }
