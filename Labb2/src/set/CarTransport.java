@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CarTransport extends Truck{
     private boolean rampDown = false;
     private List<PassengerCar> loadedCars = new ArrayList<>();
-    private int loadCapacity = 8;
+    private int loadCapacity = 5;
 
     public CarTransport(){
         super(2, 125, 0, Color.red, "CarTransport", 0.05);
