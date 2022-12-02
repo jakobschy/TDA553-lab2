@@ -11,6 +11,7 @@ public abstract class Vehicle implements Moveable{
     private final int maxCoords = 100;
     private double dir;
     private double turnFactor;
+    private boolean allowedToMove;
     public Vehicle(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, double turnFactor) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -24,16 +25,18 @@ public abstract class Vehicle implements Moveable{
     }
     
     public void setCurrentSpeed(double speed){
-        if(speed > getEnginePower()) {
-            this.currentSpeed = getEnginePower();
-            System.out.print("speed too high, was set to enginePower");
-        }
-        if(speed < 0) {
-            this.currentSpeed = 0;
-            System.out.print("speed too low, was set to 0");
-        }
-        else{
-            this.currentSpeed = speed;
+        if(allowedToMove){
+            if(speed > getEnginePower()) {
+                this.currentSpeed = getEnginePower();
+                System.out.print("speed too high, was set to enginePower");
+            }
+            if(speed < 0) {
+                this.currentSpeed = 0;
+                System.out.print("speed too low, was set to 0");
+            }
+            else{
+                this.currentSpeed = speed;
+            }
         }
     }
 
@@ -55,6 +58,13 @@ public abstract class Vehicle implements Moveable{
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public void setAllowedToMove(boolean allowedToMove) {
+        this.allowedToMove = allowedToMove;
+    }
+    public boolean isAllowedToMove() {
+        return allowedToMove;
     }
 
     public double getDir() {

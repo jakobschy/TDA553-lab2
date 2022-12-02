@@ -39,11 +39,11 @@ public class Scania extends Truck{
     }
 
     @Override
-    public boolean allowedToMove(){
+    public void setAllowedToMove(){
         if(rampAngle == 0){
-            return true;
+            super.setAllowedToMove(true);
         } else {
-            return false;
+            super.setAllowedToMove(false);
         }
 
     }

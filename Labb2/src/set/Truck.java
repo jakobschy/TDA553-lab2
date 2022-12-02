@@ -12,14 +12,4 @@ public abstract class Truck extends Vehicle implements truckInter{
       // TODO Auto-generated method stub
       return 1;
    }
-
-   @Override
-   public void setCurrentSpeed(double speed) {
-      if(allowedToMove()){
-         super.setCurrentSpeed(speed);
-
-      }
-  }
-
-  public abstract boolean allowedToMove();
 }

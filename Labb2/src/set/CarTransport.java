@@ -6,12 +6,13 @@ import java.util.ArrayList;
 public class CarTransport extends Truck implements LoaderInter, Moveable{
     private boolean rampDown = false;
     private List<Vehicle> loadedCars = new ArrayList<>();
-    private int loadCapacity = 5;
+    private int loadCapacity;
     private CarLoader loader = new CarLoader();
     
 
-    public CarTransport(){
+    public CarTransport(int loadCapacity){
         super(2, 125, 0, Color.red, "CarTransport", 0.05);
+        this.loadCapacity = loadCapacity;
     }
 
     public boolean canChangeRampAngle(){
@@ -35,9 +36,8 @@ public class CarTransport extends Truck implements LoaderInter, Moveable{
     }
 
     @Override
-    public boolean allowedToMove(){
-        return !rampDown;
-
+    public void setAllowedToMove(){
+        super.setAllowedToMove(!rampDown);
     }
     public List<Vehicle> getLoadedCars(){
         return loadedCars;
@@ -46,8 +46,7 @@ public class CarTransport extends Truck implements LoaderInter, Moveable{
         return loadCapacity;
     }
     public void loadCar(Vehicle car){
-        if(!car.getClass().equals(CarTransport.class))
-        loader.loadCar(car, this);
+        if(!car.getClass().equals(CarTransport.class)) loader.loadCar(car, this);
     }
     public void unloadCar(Vehicle car){
         loader.unloadCar(car, this);
