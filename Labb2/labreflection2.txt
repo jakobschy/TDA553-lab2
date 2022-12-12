@@ -1,3 +1,5 @@
+finish fixing critical points
+
 Your design probably has a type called something like Car or Vehicle that is a supertype to both Volvo and Scania. 
 What is the contract for gas() and brake() in this type? 
 Do the implementations of gas() and brake() in both Volvo and Scania follow this contract? 
