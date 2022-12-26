@@ -6,8 +6,8 @@ public abstract class Turbo extends PassengerCar{
     private boolean turboOn;
     private double turboFactor;
 
-    public Turbo(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, double turnFactor, double turboFactor){
-        super(nrDoors, enginePower, currentSpeed, color, modelName, turnFactor);
+    public Turbo(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, double turnFactor, double turboFactor, double x, double y){
+        super(nrDoors, enginePower, currentSpeed, color, modelName, turnFactor, x, y);
         this.turboFactor = turboFactor;
     }
 

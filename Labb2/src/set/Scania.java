@@ -4,8 +4,8 @@ import java.awt.*;
 public class Scania extends Truck{
     private int rampAngle = 0;
 
-    public Scania(){
-        super(2, 125, 0, Color.red, "Scania", 0.05);
+    public Scania(double x, double y){
+        super(2, 125, 0, Color.red, "Scania", 0.05, x, y);
     }
 
     public boolean canChangeRampAngle(){

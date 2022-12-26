@@ -10,8 +10,8 @@ public class CarTransport extends Truck implements LoaderInter, Moveable{
     private CarLoader loader = new CarLoader();
     
 
-    public CarTransport(int loadCapacity){
-        super(2, 125, 0, Color.red, "CarTransport", 0.05);
+    public CarTransport(int loadCapacity, double x, double y){
+        super(2, 125, 0, Color.red, "CarTransport", 0.05, x, y);
         this.loadCapacity = loadCapacity;
     }
 

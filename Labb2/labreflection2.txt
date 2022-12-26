@@ -1,0 +1,28 @@
+finish fixing critical points
+
+Your design probably has a type called something like Car or Vehicle that is a supertype to both Volvo and Scania. 
+What is the contract for gas() and brake() in this type? 
+Do the implementations of gas() and brake() in both Volvo and Scania follow this contract? 
+Does your design follow the Liskov Substitution Principle?
+
+We have both our gas and brake methods in the "Vehicle" class. Both Volvo and Scania share this class and hence it follows
+the Liskov Substitution Principle. There is no override.
+
+How did you handle duplicated code between Scania, the car transporters and the repair shops? 
+Explain how you decided when to use subclassing and when to use composition and delegation.
+
+We used subclassing when a class "was" something and delegation when a class "has" something. To clarify, a "CarTransporter
+is a "Truck", therefore "CarTransporter" is a subclass of "Truck". And a "Truck" is a "Vehicle", therefore "Truck" is a 
+subclass of a "Vehicle". However a "CarTransporter" has the ability to load vehicles, therefore "CarTransporter" has a 
+"CarLoader", where we delegate functions and attributes from. We avoided duplicating code by putting "CarTransporter" and
+"CarRepairShop"s shared methods in a separete class called "CarLoader", which both classes delegate their methods from.
+
+Did you need to modify the design from lab 1 in order to make these extensions?
+
+Yes.
+
+If so, how could you have noticed that your design from Lab 1 did not follow the Open-Closed Principle before you 
+started working on Lab 2?
+
+Our class "Car", which is now called "Vehicle" was not general enough, and therefore we had to change aspects of it that
+didn't fit more specific vehicles, such as trucks. It was built for passenger cars, not for trucks.
