@@ -76,9 +76,6 @@ public abstract class Vehicle implements Moveable{
     public double getY() {
         return y;
     }
-    public int getNrDoors(){
-        return nrDoors;
-    }
 
     public double getEnginePower(){
         return enginePower;

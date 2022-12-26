@@ -1,5 +1,4 @@
 package src.set;
-import java.util.*;
 
 public class CarLoader {
     private int marginTrash = 10;
