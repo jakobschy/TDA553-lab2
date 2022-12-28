@@ -20,6 +20,7 @@ public class Scania extends Truck{
         if(canChangeRampAngle()){
             if(rampAngle - degrees >= 0 && degrees >= 0){
                 rampAngle -= degrees;
+                checkIfAllowedToMove();
     
             } else {
                 System.out.println("Degrees were out of range or negative : " + degrees);
@@ -31,6 +32,7 @@ public class Scania extends Truck{
         if(canChangeRampAngle()){
             if(rampAngle + degrees <= 70 && degrees >= 0){
                 rampAngle += degrees;
+                checkIfAllowedToMove();
     
             } else {
                 System.out.println("Degrees were out of range or negative : " + degrees);
@@ -38,12 +40,12 @@ public class Scania extends Truck{
         }
     }
 
-    @Override
-    public void setAllowedToMove(){
+
+    public void checkIfAllowedToMove(){
         if(rampAngle == 0){
-            super.setAllowedToMove(true);
+            setAllowedToMove(true);
         } else {
-            super.setAllowedToMove(false);
+            setAllowedToMove(false);
         }
 
     }
