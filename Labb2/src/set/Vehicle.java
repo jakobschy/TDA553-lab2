@@ -8,11 +8,11 @@ public abstract class Vehicle implements Moveable{
     private Color color; // Color of the src.car
     private String modelName; // The src.car model name
     private double x,y;
-    private final int maxCoords = 500;
+    private final int maxCoords = 100;
     private double dir;
     private double turnFactor;
-    private boolean allowedToMove = true;
-    public Vehicle(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, double turnFactor, double x, double y) {
+    private boolean allowedToMove;
+    public Vehicle(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName, double turnFactor) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = currentSpeed;
@@ -20,8 +20,8 @@ public abstract class Vehicle implements Moveable{
         this.modelName = modelName;
         this.turnFactor = turnFactor;
         Random rnd = new Random();
-        this.x = x;
-        this.y = y;//rnd.nextDouble(0, maxCoords);
+        x = rnd.nextDouble(-maxCoords, maxCoords);
+        y = rnd.nextDouble(-maxCoords, maxCoords);
     }
     
     public void setCurrentSpeed(double speed){
@@ -37,13 +37,11 @@ public abstract class Vehicle implements Moveable{
             else{
                 this.currentSpeed = speed;
             }
-        }else{
-            currentSpeed = 0;
         }
     }
 
     public void startEngine(){
-        setCurrentSpeed(0.2);
+        currentSpeed = 0.1;
     }
     public void setColor(Color clr){
         color = clr;
@@ -93,7 +91,7 @@ public abstract class Vehicle implements Moveable{
     }
 
     public void stopEngine(){
-        setCurrentSpeed(0);
+        currentSpeed = 0;
     }
     public void incrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
@@ -116,17 +114,14 @@ public abstract class Vehicle implements Moveable{
 
 
     public void gas(double amount){
-        if(amount > 0) {
-            incrementSpeed(amount);
-        }else{
-            System.out.println("gas vehicle");
+        if(amount <= 1 && amount >= 0) incrementSpeed(amount);
+        else{
             System.out.print("Invalid amount: " + amount);
         }
     }
     public void brake(double amount){
-        if(amount > 0) {
-            decrementSpeed(amount);
-        }else{
+        if(amount <= 1 && amount >= 0) decrementSpeed(amount);
+        else{
             System.out.print("Invalid amount: " + amount);
         }
     }
