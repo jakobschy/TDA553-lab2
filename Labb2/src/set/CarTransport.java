@@ -23,22 +23,25 @@ public class CarTransport extends Truck implements LoaderInter, Moveable{
         }
     }
 
+    public boolean canLoadOrUnload(){
+        return rampDown;
+
+    }
+
     public void lowerRamp(){
         if(canChangeRampAngle()){
             rampDown = true;
+            setAllowedToMove(false);
         }
     }
 
     public void raiseRamp(){
         if(canChangeRampAngle()){
             rampDown = false;  
+            setAllowedToMove(true);
         }
     }
 
-    @Override
-    public void setAllowedToMove(){
-        super.setAllowedToMove(!rampDown);
-    }
     public List<Vehicle> getLoadedCars(){
         return loadedCars;
     }
@@ -46,10 +49,10 @@ public class CarTransport extends Truck implements LoaderInter, Moveable{
         return loadCapacity;
     }
     public void loadCar(Vehicle car){
-        if(!car.getClass().equals(CarTransport.class)) loader.loadCar(car, this);
+        if(!car.getClass().equals(CarTransport.class) && canLoadOrUnload()) loader.loadCar(car, this);
     }
     public void unloadCar(Vehicle car){
-        loader.unloadCar(car, this);
+        if(canLoadOrUnload()){loader.unloadCar(car, this);}
     }
     
 }

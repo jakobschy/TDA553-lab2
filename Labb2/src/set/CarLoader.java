@@ -1,4 +1,6 @@
+
 package src.set;
+import java.util.*;
 
 public class CarLoader {
     private int marginTrash = 10;
@@ -18,9 +20,11 @@ public class CarLoader {
         }
     }
     public void unloadCar(Vehicle car, LoaderInter loader){
-        car.setAllowedToMove(true);
-        loader.getLoadedCars().remove(car);
-        car.setX(loader.getX());
-        car.setY(loader.getY() + marginTrash);
+        if(loader.getLoadedCars().contains(car)){
+            car.setAllowedToMove(true);
+            loader.getLoadedCars().remove(car);
+            car.setX(loader.getX());
+            car.setY(loader.getY() + marginTrash);
+        }
     }
 }
